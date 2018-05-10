@@ -35,7 +35,7 @@ export default class Paddle {
 
     render(svg) {
 
-        //creating paddle and elements=============================
+        //creating paddle elements=============================
 
         let rect = document.createElementNS(SVG_NS, 'rect');
         rect.setAttributeNS(null, 'fill', '#ffffff');
