@@ -8,10 +8,11 @@ export default class Paddle {
             this.y = y;
             this.speed = 10;
             this.score = 0;
-            document.addEventListener("keydown", event => {
+            document.addEventListener('keydown', event => {
                 switch (event.key) {
                     case up:
                         this.up();
+
                         break;
                     case down:
                         this.down();
@@ -23,11 +24,13 @@ export default class Paddle {
         } //end of constructor
 
     up() {
-        this.y = this.y - this.speed;
+        // this.y = this.y - this.speed;
+        this.y = Math.max(0, this.y - this.speed);
     }
 
     down() {
-        this.y = this.y + this.speed;
+
+        this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
     }
 
     render(svg) {
