@@ -53,6 +53,8 @@ export default class Ball {
                 // this.vx = -this.vx;
                 this.vx *= -1;
                 this.ping.play();
+                //changing the size of the paddles
+                // player1.height = math.
             }
 
         } else {

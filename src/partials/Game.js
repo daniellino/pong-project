@@ -14,10 +14,17 @@ export default class Game {
         this.gameElement = document.getElementById(this.element);
         this.board = new Board(this.width, this.height);
         this.ball = new Ball(8, this.width, this.height);
+        //adding second ball to the stage
+        this.ball1 = new Ball(5, this.width, this.height);
 
         this.paddleWidth = 8;
         this.paddleHeight = 56;
         this.boardGap = 10;
+
+
+        // set url to midi file
+        // this.soundTrack = new Audio("public/sounds/pong-01.wav");
+        // this.soundTrack.play();
 
         this.pause = false;
 
@@ -28,7 +35,8 @@ export default class Game {
             this.boardGap,
             ((this.height - this.paddleHeight) / 2),
             KEYS.a,
-            KEYS.z
+            KEYS.z,
+            'player1'
         );
         // console.log(this.player1);
         this.player2 = new Paddle(
@@ -38,7 +46,8 @@ export default class Game {
             (this.width - this.boardGap - this.paddleWidth),
             ((this.height - this.paddleHeight) / 2),
             KEYS.up,
-            KEYS.down
+            KEYS.down,
+            'player2'
         );
 
         this.score1 = new Score(this.width / 2 - 50, 30, 30);
@@ -74,6 +83,8 @@ export default class Game {
         this.player2.render(svg);
 
         this.ball.render(svg, this.player1, this.player2);
+        //adding second ball to the stage
+        this.ball1.render(svg, this.player1, this.player2);
 
 
         this.score1.render(svg, this.player1.score);
