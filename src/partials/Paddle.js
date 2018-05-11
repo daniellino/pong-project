@@ -54,7 +54,6 @@ export default class Paddle {
 
         svg.appendChild(rect);
 
-
     }
 
 }
