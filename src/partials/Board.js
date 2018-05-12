@@ -23,9 +23,20 @@ export default class Board {
         line.setAttributeNS(null, 'stroke', 'white');
         line.setAttributeNS(null, 'stroke-dasharray', '20,15');
         line.setAttributeNS(null, 'stroke-width', '4');
+        //center dashed middle circle================================
+        let circle = document.createElementNS(SVG_NS, 'circle');
+        circle.setAttributeNS(null, 'cx', (this.width / 2));
+        circle.setAttributeNS(null, 'cy', (this.height / 2));
+        circle.setAttributeNS(null, 'r', 40);
+        circle.setAttributeNS(null, 'stroke', 'white');
+        circle.setAttributeNS(null, 'stroke-dasharray', '20,15');
+        circle.setAttributeNS(null, 'stroke-width', '4');
+        circle.setAttributeNS(null, 'fill', '#353535');
+
 
         svg.appendChild(rect);
         svg.appendChild(line);
+        svg.appendChild(circle);
 
     }
 }

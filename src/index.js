@@ -9,3 +9,11 @@ const game = new Game('game', 512, 256);
     //recursion
     requestAnimationFrame(gameLoop);
 })();
+
+// use this for testing
+// function gameLoop() {
+//     game.render();
+//     //recursion
+//     setInterval(gameLoop, 20);
+
+// }

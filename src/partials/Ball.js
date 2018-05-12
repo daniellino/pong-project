@@ -53,8 +53,11 @@ export default class Ball {
                 // this.vx = -this.vx;
                 this.vx *= -1;
                 this.ping.play();
-                //changing the size of the paddles
-                // player1.height = math.
+
+                //+++++++++++++++changing the size of the player1 paddle randomly+++++++++++++++++++++++++++++++++
+                player1.height = Math.floor(Math.random() * 10 * 5);
+
+
             }
 
         } else {
@@ -64,7 +67,8 @@ export default class Ball {
             if ((this.x - this.radius <= rightX) &&
                 (this.x - this.radius >= leftX) &&
                 (this.y >= topY && this.y <= bottomY)) {
-
+                //+++++++++++++++changing the size of the player2 paddles randomly+++++++++++++++++++++++++++++++++
+                player2.height = Math.floor(Math.random() * 10 * 5);
                 this.vx *= -1;
                 this.ping.play();
             } //...
@@ -72,16 +76,12 @@ export default class Ball {
     }
 
     goal(player1) {
-            player1.score++;
-            this.reset();
-            console.log(player1.score);
-        }
-        // goal(player2) {
-        //         player1.score++;
-        //         this.reset();
-        //         console.log(player1.score);
-        //     }
-        //==========================================
+        player1.score++;
+        this.reset();
+        console.log(player1.score);
+    }
+
+    //==========================================
     render(svg, player1, player2) {
         this.x += this.vx;
         this.y += this.vy;

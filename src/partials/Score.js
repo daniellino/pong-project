@@ -15,6 +15,7 @@ export default class Score {
         text.setAttributeNS(null, 'fill', 'white');
         text.textContent = score;
         svg.appendChild(text);
+        // svg.appendChild("game paused!");
 
     }
 
