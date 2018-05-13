@@ -55,14 +55,11 @@ export default class Game { //Game class
             this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
             document.addEventListener('keydown', event => { // pause game
-                if (event.key == KEYS.spaceBar) {
+                if (event.key === KEYS.spaceBar) {
                     this.pause = !this.pause;
 
                 }
-
             });
-
-            // console.log(this.player2);
         } //end of constructor
 
 
@@ -92,10 +89,5 @@ export default class Game { //Game class
 
         this.score1.render(svg, this.player1.score);
         this.score2.render(svg, this.player2.score);
-
-
-
     }
-
-
 }
