@@ -65,7 +65,7 @@ export default class Ball {
                 this.pingSound.play();
 
                 //+++++++++++++++changing the size of the player1 paddle randomly+++++++++++++++++++++++++++++++++
-                player1.height = Math.floor((Math.random() * 10 + 1) * 5);
+                player1.height = Math.floor((Math.random() * 10 + 2) * 6);
 
 
             }
@@ -78,7 +78,7 @@ export default class Ball {
                 (this.x - this.radius >= leftX) &&
                 (this.y >= topY && this.y <= bottomY)) {
                 //+++++++++++++++changing the size of the player2 paddles randomly+++++++++++++++++++++++++++++++++
-                player2.height = Math.floor((Math.random() * 10 + 1) * 5);
+                player2.height = Math.floor((Math.random() * 10 + 2) * 6);
                 this.vx *= -1;
                 this.pongSound.play();
             } //...
