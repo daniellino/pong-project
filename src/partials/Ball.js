@@ -5,7 +5,9 @@ export default class Ball {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.direction = 1;
-        this.ping = new Audio("public/sounds/pong-01.wav");
+        this.ping = new Audio('public/sounds/pong-01.wav');
+        this.outLeft = new Audio('public/sounds/give-me-that-back.mp3'); //sound for ball out from left
+        this.outRight = new Audio('public/sounds/notification52.mp3'); //sound for ball out from right
         this.reset(); //calling the reset
     }
 
@@ -36,6 +38,11 @@ export default class Ball {
             } else if (hitTop || hitBottom) {
                 this.vy = -this.vy;
             }
+            if (hitRight) {
+                this.outLeft.play(); //ball out from left
+            } else if (hitLeft) {
+                this.outRight.play(); //ball out from right
+            }
 
         }
         //==========================================
@@ -55,7 +62,7 @@ export default class Ball {
                 this.ping.play();
 
                 //+++++++++++++++changing the size of the player1 paddle randomly+++++++++++++++++++++++++++++++++
-                player1.height = Math.floor(Math.random() * 10 * 5);
+                player1.height = Math.floor((Math.random() * 10 + 1) * 5);
 
 
             }
@@ -68,7 +75,7 @@ export default class Ball {
                 (this.x - this.radius >= leftX) &&
                 (this.y >= topY && this.y <= bottomY)) {
                 //+++++++++++++++changing the size of the player2 paddles randomly+++++++++++++++++++++++++++++++++
-                player2.height = Math.floor(Math.random() * 10 * 5);
+                player2.height = Math.floor((Math.random() * 10 + 1) * 5);
                 this.vx *= -1;
                 this.ping.play();
             } //...
@@ -78,7 +85,7 @@ export default class Ball {
     goal(player1) {
         player1.score++;
         this.reset();
-        console.log(player1.score);
+        // console.log(player1.score);
     }
 
     //==========================================

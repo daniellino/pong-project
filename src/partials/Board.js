@@ -32,11 +32,22 @@ export default class Board {
         circle.setAttributeNS(null, 'stroke-dasharray', '20,15');
         circle.setAttributeNS(null, 'stroke-width', '4');
         circle.setAttributeNS(null, 'fill', '#353535');
+        //center dashed circumference for board================================
+        let rect2 = document.createElementNS(SVG_NS, 'rect');
+        line.setAttributeNS(null, 'stroke-dasharray', '20,15');
+        rect2.setAttributeNS(null, 'stroke', '#FFF800');
+        rect2.setAttributeNS(null, 'width', this.width - 6);
+        rect2.setAttributeNS(null, 'height', this.height - 6);
+        rect2.setAttributeNS(null, 'x', 3);
+        rect2.setAttributeNS(null, 'y', 3);
+        rect2.setAttributeNS(null, 'stroke-width', '2');
+        rect2.setAttributeNS(null, 'stroke-dasharray', '10,10');
+        rect2.setAttributeNS(null, 'fill', 'none');
 
 
         svg.appendChild(rect);
         svg.appendChild(line);
         svg.appendChild(circle);
-
+        svg.appendChild(rect2);
     }
 }
