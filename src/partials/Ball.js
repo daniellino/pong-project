@@ -89,6 +89,7 @@ export default class Ball {
         player1.score++;
         this.reset();
         // console.log(player1.score);
+
     }
 
     //==========================================

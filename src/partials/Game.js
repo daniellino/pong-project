@@ -89,5 +89,6 @@ export default class Game { //Game class
 
         this.score1.render(svg, this.player1.score);
         this.score2.render(svg, this.player2.score);
+
     }
 }

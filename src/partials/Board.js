@@ -4,6 +4,7 @@ export default class Board {
     constructor(width, height) {
         this.width = width;
         this.height = height;
+        this.bkgMus = new Audio('public/sounds/background-music.mp3') //Background music
     }
 
     render(svg) {
@@ -49,5 +50,7 @@ export default class Board {
         svg.appendChild(line);
         svg.appendChild(circle);
         svg.appendChild(rect2);
+        //playing background music
+        this.bkgMus.play();
     }
 }

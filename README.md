@@ -33,3 +33,4 @@ A basic pong game using SVGs.
 * added central dashed circle and dashed line around the board.
 * added sound effect for each side of the board to show which player lost the ball.
 * added random changing in size of the paddles to create a more challenging experience. each paddle size would change randomly upon the touching the ball by the opponent's paddle.
+* added background music.
