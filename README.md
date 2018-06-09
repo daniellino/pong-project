@@ -26,6 +26,14 @@ A basic pong game using SVGs.
 * ▲ : up
 * ▼: down
 
+## Technologies used
+
+* HTML
+* CSS
+* JavaScript
+* npm
+* Webpack
+
 ## modifications
 
 * added the second ball with a smaller size to make the game more challenging.

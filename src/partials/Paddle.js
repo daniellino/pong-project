@@ -9,10 +9,8 @@ export default class Paddle {
             //controling the paddle speed
             this.speed = 10;
             this.score = 0;
-
             this.player = player;
             this.keyState = {};
-
             document.addEventListener('keydown', event => {
                 this.keyState[event.key || event.which] = true;
             }, true);
@@ -20,28 +18,12 @@ export default class Paddle {
             document.addEventListener('keyup', event => {
                 this.keyState[event.key || event.which] = false;
             }, true);
-            // document.addEventListener('keydown', event => {
-            //     switch (event.key) {
-            //         case up:
-            //             this.up();
-
-            //             break;
-            //         case down:
-            //             this.down();
-            //             break;
-            //     }
-            //     // console.log(event);
-            // });
-
         } //end of constructor
-
     up() {
         // this.y = this.y - this.speed;
         this.y = Math.max(0, this.y - this.speed);
     }
-
     down() {
-
             this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
         }
         //helper method
@@ -52,9 +34,7 @@ export default class Paddle {
         let bottomY = y + height;
         return [leftX, rightX, topY, bottomY];
     }
-
     render(svg) {
-
         // Player movement
         if (this.keyState['a'] && this.player === 'player1') {
             this.up();
@@ -76,9 +56,6 @@ export default class Paddle {
         rect.setAttributeNS(null, 'height', this.height);
         rect.setAttributeNS(null, 'x', this.x); //x of the top left corner
         rect.setAttributeNS(null, 'y', this.y); //y of the top left corner
-
         svg.appendChild(rect);
-
     }
-
 }

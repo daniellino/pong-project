@@ -1,33 +1,28 @@
 import { SVG_NS } from '../settings';
 export default class Ball {
     constructor(radius, boardWidth, boardHeight) {
-        this.radius = radius;
-        this.boardWidth = boardWidth;
-        this.boardHeight = boardHeight;
-        this.direction = 1;
-        this.pingSound = new Audio('public/sounds/ping.mp3')
-        this.pongSound = new Audio('public/sounds/pong.mp3')
-            // this.ping = new Audio('public/sounds/pong-01.wav');
-        this.outLeft = new Audio('public/sounds/give-me-that-back.mp3'); //sound for ball out from left
-        this.outRight = new Audio('public/sounds/notification52.mp3'); //sound for ball out from right
-        this.reset(); //calling the reset
-    }
-
-
-    //==========================================
+            this.radius = radius;
+            this.boardWidth = boardWidth;
+            this.boardHeight = boardHeight;
+            this.direction = 1;
+            this.pingSound = new Audio('public/sounds/ping.mp3')
+            this.pongSound = new Audio('public/sounds/pong.mp3')
+                // this.ping = new Audio('public/sounds/pong-01.wav');
+            this.outLeft = new Audio('public/sounds/give-me-that-back.mp3'); //sound for ball out from left
+            this.outRight = new Audio('public/sounds/notification52.mp3'); //sound for ball out from right
+            this.reset(); //calling the reset
+        }
+        //==========================================
     reset() { //reset ball
             this.x = this.boardWidth / 2;
             this.y = this.boardHeight / 2;
-
             //preventing from being zero
             this.vy = 0;
             while (this.vy === 0) {
                 this.vy = Math.floor(Math.random() * 10 - 5);
             }
-
             this.vx = this.direction * (6 - Math.abs(this.vy));
         } //end of reset method
-
 
     wallCollision() { //collision detection method
             const hitLeft = this.x - this.radius <= 0;
@@ -45,7 +40,6 @@ export default class Ball {
             } else if (hitLeft) {
                 this.outRight.play(); //ball out from right
             }
-
         }
         //==========================================
     paddleCollision(player1, player2) { //detecting paddle collision
@@ -58,16 +52,10 @@ export default class Ball {
             if ((this.x + this.radius >= leftX) &&
                 (this.x + this.radius <= rightX) &&
                 (this.y >= topY && this.y <= bottomY)) {
-
-                // this.vx = -this.vx;
                 this.vx *= -1;
-                // this.ping.play();
                 this.pingSound.play();
-
-                //+++++++++++++++changing the size of the player1 paddle randomly+++++++++++++++++++++++++++++++++
+                //+++++++++++++++changing the size of the player1 paddle randomly++++++++++++++++++++++++
                 player1.height = Math.floor((Math.random() * 10 + 2) * 6);
-
-
             }
 
         } else {
@@ -77,43 +65,33 @@ export default class Ball {
             if ((this.x - this.radius <= rightX) &&
                 (this.x - this.radius >= leftX) &&
                 (this.y >= topY && this.y <= bottomY)) {
-                //+++++++++++++++changing the size of the player2 paddles randomly+++++++++++++++++++++++++++++++++
+                //+++++++++++++++changing the size of the player2 paddles randomly+++++++++++++++++++++++
                 player2.height = Math.floor((Math.random() * 10 + 2) * 6);
                 this.vx *= -1;
                 this.pongSound.play();
             } //...
         }
     }
-
     goal(player1) {
-        player1.score++;
-        this.reset();
-        // console.log(player1.score);
-
-    }
-
-    //==========================================
+            player1.score++;
+            this.reset();
+        }
+        //==========================================
     render(svg, player1, player2) {
         this.x += this.vx;
         this.y += this.vy;
         this.wallCollision();
-
         this.paddleCollision(player1, player2);
-
         //Ball element=============================
-
         let circle = document.createElementNS(SVG_NS, 'circle');
         circle.setAttributeNS(null, 'r', this.radius);
         circle.setAttributeNS(null, 'cx', this.x); //x of the center point
         circle.setAttributeNS(null, 'cy', this.y); // y of the center point
         circle.setAttributeNS(null, 'fill', 'white'); //x of the top left corner
-
         svg.appendChild(circle);
-
         //detect goal
         const rightGoal = this.x + this.radius >= this.boardWidth;
         const leftGoal = this.x - this.radius <= 0;
-
         if (rightGoal) {
             this.goal(player1);
             this.direction = -1;
@@ -121,7 +99,5 @@ export default class Ball {
             this.goal(player2);
             this.direction = 1;
         }
-
     }
-
 }

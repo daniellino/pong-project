@@ -1,14 +1,11 @@
 import { SVG_NS } from '../settings';
 export default class Board {
-
     constructor(width, height) {
         this.width = width;
         this.height = height;
         this.bkgMus = new Audio('public/sounds/background-music.mp3') //Background music
     }
-
     render(svg) {
-        //...
         //creating Borad and elements
         //main board========================================
         let rect = document.createElementNS(SVG_NS, 'rect');
@@ -44,8 +41,6 @@ export default class Board {
         rect2.setAttributeNS(null, 'stroke-width', '2');
         rect2.setAttributeNS(null, 'stroke-dasharray', '10,10');
         rect2.setAttributeNS(null, 'fill', 'none');
-
-
         svg.appendChild(rect);
         svg.appendChild(line);
         svg.appendChild(circle);
